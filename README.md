@@ -1,59 +1,111 @@
-# EcommerceAngular
+# E-commerce Angular - Catálogo de Produtos com Carrinho de Compras
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.0.5.
+## Descrição do Projeto
+Este é um projeto de e-commerce desenvolvido em Angular que implementa as melhores práticas de Clean Code e SOLID. Ele utiliza a Fake Store API como fonte de dados para o catálogo de produtos e inclui funcionalidades para exibição de produtos, visualização de detalhes e gerenciamento de carrinho de compras.
 
-## Development server
+## Funcionalidades
+1. **Lista de Produtos**:
+   - Exibição de todos os produtos com informações como título, preço, descrição, categoria e imagem.
+   - Possibilidade de adicionar produtos ao carrinho diretamente da lista.
 
-To start a local development server, run:
+2. **Detalhes do Produto**:
+   - Página dedicada com informações completas sobre o produto selecionado.
+   - Visualização de imagem ampliada, descrição detalhada, preço e categoria.
 
-```bash
-ng serve
+3. **Carrinho de Compras**:
+   - Adicionar e remover produtos do carrinho.
+   - Exibição dos itens do carrinho com atualização dinâmica.
+
+4. **Integração com API Pública**:
+   - Dados de produtos são consumidos da [Fake Store API](https://fakestoreapi.com/).
+
+## Tecnologias Utilizadas
+- **Angular** (versão mais recente): Framework principal do projeto.
+- **SCSS**: Estilização modular e customizada.
+- **Angular Material**: Componentes pré-prontos para melhorar a experiência do usuário.
+- **RxJS**: Gerenciamento de fluxos reativos e manipulação de dados.
+- **Axios**: Biblioteca para requisições HTTP.
+
+## Estrutura do Projeto
+```
+src/
+├── app/
+│   ├── core/                // Lógica compartilhada
+│   │   ├── services/        // Services para API e negócio
+│   │   │   ├── product.service.ts
+│   │   │   ├── cart.service.ts
+│   │   └── models/          // Interfaces e tipos
+│   │       └── product.model.ts
+│   ├── features/            // Módulos principais
+│   │   ├── cart/            // Gerenciamento do carrinho
+│   │   ├── products/        // Exibição e detalhes de produtos
+│   └── app-routing.module.ts // Configuração de rotas
+└── environments/            // Configurações de ambiente
 ```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+## Endpoints da API
+- **Lista de produtos**: `GET /products`
+- **Detalhes do produto**: `GET /products/:id`
 
-## Code scaffolding
+## Configuração e Execução
+1. Clone o repositório:
+   ```bash
+   git clone <url-do-repositorio>
+   cd ecommerce-angular
+   ```
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+2. Instale as dependências:
+   ```bash
+   npm install
+   ```
 
-```bash
-ng generate component component-name
-```
+3. Inicie o servidor de desenvolvimento:
+   ```bash
+   ng serve
+   ```
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+4. Acesse a aplicação em `http://localhost:4200/`.
 
-```bash
-ng generate --help
-```
+## Detalhamento das Funcionalidades
+### Lista de Produtos
+- **Arquivos principais**:
+  - `product-list.component.ts`: Faz a requisição dos produtos via `ProductService`.
+  - `product-list.component.html`: Renderiza os produtos em cards.
 
-## Building
+- **Interações**:
+  - Exibição de produtos usando `*ngFor`.
+  - Botão para adicionar produto ao carrinho com evento `(click)`.
 
-To build the project run:
+### Detalhes do Produto
+- **Arquivos principais**:
+  - `product-details.component.ts`: Obtém os detalhes de um produto com base no ID da rota.
+  - `product-details.component.html`: Renderiza detalhes completos do produto.
 
-```bash
-ng build
-```
+### Carrinho de Compras
+- **Arquivos principais**:
+  - `cart.service.ts`: Gerencia os produtos no carrinho.
+  - Componentes podem acessar os itens do carrinho via `getCartItems()`.
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+- **Interações**:
+  - Adicionar produtos ao carrinho.
+  - Remover produtos por ID.
 
-## Running unit tests
+## Melhores Práticas Adotadas
+1. **SOLID**:
+   - **Responsabilidade única**: Cada serviço tem uma única responsabilidade (ex.: `ProductService` apenas gerencia produtos).
+   - **Injeção de dependências**: Usado extensivamente para acoplamento reduzido.
 
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
+2. **Clean Code**:
+   - Nomes descritivos para variáveis, métodos e arquivos.
+   - Componentes separados por funcionalidade.
 
-```bash
-ng test
-```
+3. **Reuso**:
+   - Modelos de dados centralizados em `core/models`.
+   - Serviços reutilizáveis.
 
-## Running end-to-end tests
+## Contribuições
+São bem-vindas contribuições para melhorias e novas funcionalidades! Abra uma *issue* ou envie um *pull request*.
 
-For end-to-end (e2e) testing, run:
+## Licença
+Este projeto é licenciado sob a [MIT License](LICENSE).
 
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
