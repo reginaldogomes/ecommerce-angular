@@ -109,3 +109,4 @@ São bem-vindas contribuições para melhorias e novas funcionalidades! Abra uma
 ## Licença
 Este projeto é licenciado sob a [MIT License](LICENSE).
 
+# ecommerce-angular
